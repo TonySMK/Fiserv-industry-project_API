@@ -2,12 +2,12 @@
 require("dotenv").config();
 
 module.exports = {
-  client: "mysql",
+  client: "mysql2",
   connection: {
-    host: "127.0.0.1",
-    database: "fiserv_db",
-    user: "root",
-    password: "lemongrass@88",
+    host: process.env.DB_HOST,
+    database: process.env.DB_NAME,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
     charset: "utf8",
   },
 };
