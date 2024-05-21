@@ -19,7 +19,7 @@ exports.up = function (knex) {
       .onUpdate("CASCADE")
       .onDelete("CASCADE");
     table.integer("quantity").unsigned();
-    table.string("modifcations", 60);
+    table.string("modifications", 60);
     table.boolean("paid").notNullable();
     table.timestamp("created_at").defaultTo(knex.fn.now());
     table

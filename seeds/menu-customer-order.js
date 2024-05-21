@@ -1,24 +1,24 @@
 // import seed data files, arrays of objects
-const customerData = require("../seed-data/users");
-const menuData = require("../seed-data/menu_items");
-const orderData = require("../seed-data/order");
+const userSeedData = require("../seed-data/users");
+const tableOrderSeedData = require("../seed-data/table_order");
+const menuItemSeedData = require("../seed-data/menu_items");
 
-exports.seed = function (knex) {
-  return knex("order")
+exports.seed = async function (knex) {
+  return knex("user")
     .del()
-    .then(function () {
-      return knex("menu_items").del();
-    })
-    .then(function () {
-      return knex("customers").del();
+    .then(() => {
+      return knex("menu_list").del();
     })
     .then(() => {
-      return knex("customers").insert(customerData);
+      return knex("table_order").del();
     })
     .then(() => {
-      return knex("menu_items").insert(menuData);
+      return knex("user").insert(userSeedData);
     })
-    .then(function () {
-      return knex("order").insert(orderData);
+    .then(() => {
+      return knex("menu_list").insert(menuItemSeedData);
+    })
+    .then(() => {
+      return knex("table_order").insert(tableOrderSeedData);
     });
 };
